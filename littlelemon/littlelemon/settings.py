@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'restaurant',
+    'rest_framework.authtoken',
+    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +137,28 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication', #For Browsable API i.e Djoser
+    ),
+}
+
+# DJOSER CONFIGURATION
+# /users/
+# /users/me/
+# /users/confirm/
+# /users/resend_activation/
+# /users/set_password/
+# /users/reset_password/
+# /users/reset_password_confirm/
+# /users/set_username/
+# /users/reset_username/
+# /users/reset_username_confirm/
+# /token/login/
+# /token/logout/
+
+DJOSER =  {
+    "USER_ID_FIELD": "username"
+}
